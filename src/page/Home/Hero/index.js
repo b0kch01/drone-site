@@ -7,19 +7,22 @@ import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { TextScramble } from "@/components/motion-primitives/text-scramble";
 
 import { Drone } from "./Drone";
+import Image from "next/image";
 
 const R = 20;
+
+const MotionImage = motion(Image);
 
 export const Hero = memo(function Hero({ mouse }) {
   const hero = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: hero,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end center"],
   });
 
   const smoothScroll = useSpring(scrollYProgress, {
-    visualDuration: 0.4,
+    visualDuration: 0.3,
     bounce: 0,
   });
 
@@ -31,29 +34,59 @@ export const Hero = memo(function Hero({ mouse }) {
   const positionXHeavy = useTransform(mouseX, [0, 1], [-R / 2, R / 2]);
   const positionYHeavy = useTransform(mouseY, [0, 1], [-R / 2, R / 2]);
 
-  const scrollYOffset = useTransform(scrollYProgress, [0, 1], ["0", "80vh"]);
-  const scrollGap = useTransform(smoothScroll, [0, 1], ["0", "10vh"]);
-  const scrollScale = useTransform(smoothScroll, [0, 1], [1, 0.8]);
+  const scrollYOffset = useTransform(smoothScroll, [0.2, 1], ["0", "-15vh"]);
+  const scrollGap = useTransform(smoothScroll, [0, 1], ["0", "5vh"]);
+  const scrollScale = useTransform(smoothScroll, [0, 1], [1, 0.4]);
+  const scrollOpacity = useTransform(scrollYProgress, [0.4, 0.9], [1, 0]);
+
   const scrollBlur = useTransform(
     smoothScroll,
-    [0, 1],
-    ["blur(0px)", "blur(10px)"],
+    [0.2, 1],
+    ["blur(0px)", "blur(20px)"],
   );
 
   return (
     <div
       ref={hero}
-      className="border-red-500 border-2 min-h-[200vh] flex flex-col items-center"
+      className="border-red-500 border-2 min-h-[300vh] flex flex-col items-center"
     >
-      <Drone scrollY={smoothScroll} />
+      <motion.div
+        initial={{ y: 50, filter: "blur(5px)" }}
+        animate={{ y: 0, filter: "blur(0px)" }}
+        transition={{ delay: 1, duration: 4 }}
+        style={{ opacity: scrollOpacity }}
+        className="fixed pointer-events-none flex items-center justify-center top-0 z-10 w-full h-full faded"
+      >
+        <Image
+          className="w-full absolute"
+          src="/svg/stars.svg"
+          width={0}
+          height={0}
+          alt=""
+        />
+        <Image
+          className="w-[40%] absolute"
+          src="/svg/circles.svg"
+          width={0}
+          height={0}
+          alt=""
+        />
+      </motion.div>
+
+      <Drone mouseX={mouseX} mouseY={mouseY} scrollY={smoothScroll} />
 
       <motion.div
-        style={{ y: scrollYOffset, scale: scrollScale, filter: scrollBlur }}
-        className="absolute top-0 min-h-screen flex items-center"
+        style={{
+          y: scrollYOffset,
+          scale: scrollScale,
+          filter: scrollBlur,
+          opacity: scrollOpacity,
+        }}
+        className="pointer-events-none fixed top-0 min-h-screen flex items-center z-20"
       >
         <motion.h1
           style={{ gap: scrollGap }}
-          className="select-none flex flex-col text-center"
+          className="select-none flex flex-col justify-center items-center text-center"
         >
           <TextEffect
             style={{ x: positionX, y: positionY }}
@@ -63,7 +96,7 @@ export const Hero = memo(function Hero({ mouse }) {
             speedReveal={0.5}
             speedSegment={0.4}
           >
-            Tap Into Modern
+            Welcome to Modern
           </TextEffect>
 
           <motion.div
@@ -71,14 +104,16 @@ export const Hero = memo(function Hero({ mouse }) {
             animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 2, delay: 2 }}
           >
-            <TextScramble
+            <TextEffect
               style={{ x: positionXHeavy, y: positionYHeavy }}
-              className="font-gleam font-mono text-[10vw] leading-[10vw] uppercase px-2 tracking-tighter"
-              duration={4}
-              delay={1}
+              per="char"
+              preset="slide"
+              className="text-[10vw] leading-[10vw] px-2 tracking-tighter"
+              segmentTransition="font-gleam"
+              delay={2.2}
             >
               Surveillance
-            </TextScramble>
+            </TextEffect>
           </motion.div>
         </motion.h1>
       </motion.div>

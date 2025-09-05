@@ -35,3 +35,8 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.faded {
+  -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 60%);
+  mask-image: linear-gradient(to bottom, black 20%, transparent 60%);
+}

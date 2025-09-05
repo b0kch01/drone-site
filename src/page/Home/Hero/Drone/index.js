@@ -3,12 +3,12 @@
 import { motion, useMotionValueEvent, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
 
-const N_FRAMES = 122;
+const N_FRAMES = 254;
 
 const getFrame = (frame) =>
-  `/drone_frames/drone_sweep${frame.toString().padStart(3, "0")}.jpg`;
+  `/drone_frames_high/drone_vid${frame.toString().padStart(3, "0")}.jpg`;
 
-export function Drone({ scrollY }) {
+export function Drone({ mouseX, mouseY, scrollY }) {
   const frames = useRef([]);
   const context = useRef(null);
 
@@ -16,7 +16,7 @@ export function Drone({ scrollY }) {
   const positionY = useTransform(scrollY, [0, 1], ["20vh", "0vh"]);
 
   useMotionValueEvent(scrollY, "change", (latestValue) => {
-    console.log(latestValue);
+    console.log(latestValue, scrollY);
     const index = Math.max(
       0,
       Math.min(Math.ceil(N_FRAMES * latestValue), N_FRAMES - 1),
@@ -47,8 +47,8 @@ export function Drone({ scrollY }) {
     <motion.div
       initial={{ scale: 0.8, y: "-5vh", filter: "blur(10px)", opacity: 0 }}
       animate={{ scale: 1, y: 0, filter: "blur(0px)", opacity: 1 }}
-      transition={{ type: "spring", visualDuration: 4, bounce: 0, delay: 2 }}
-      className="sticky left-0 top-0 h-screen w-full flex items-center justify-center"
+      transition={{ type: "spring", visualDuration: 2, bounce: 0, delay: 2 }}
+      className="overflow-y-hidden sticky left-0 top-0 h-screen w-full flex items-center justify-center"
     >
       <motion.canvas
         style={{ scale, y: positionY }}
