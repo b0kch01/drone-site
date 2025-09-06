@@ -20,7 +20,7 @@ export function Navigation() {
         className={cn("absolute flex text-center text-sm *:px-2", styles.links)}
       >
         <a href="#">About</a>
-        <a href="#">Tech</a>
+        <a href="#tech">Tech</a>
         <a href="#">Team</a>
         <a href="#">Contact</a>
       </div>

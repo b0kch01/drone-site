@@ -1,14 +1,14 @@
 "use client";
 
 import { useMotionValue } from "motion/react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
+import { Flight } from "./Flight";
 import { Hero } from "./Hero";
+import { Introduction } from "./Introduction";
 import { Navigation } from "./Navigation";
 
 export const Home = function Home() {
-  const [z, setZ] = useState(0);
-
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
@@ -34,7 +34,8 @@ export const Home = function Home() {
       <Navigation />
       <Hero mouse={mouse} />
 
-      <button onClick={() => setZ((now) => now + 1)}>{z}</button>
+      <Introduction />
+      <Flight />
 
       <div className="h-[500vh]" />
     </div>

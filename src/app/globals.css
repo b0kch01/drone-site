@@ -40,3 +40,20 @@ body {
   -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 60%);
   mask-image: linear-gradient(to bottom, black 20%, transparent 60%);
 }
+
+.border-3d {
+  position: relative;
+}
+
+.border-3d::before {
+  content: "";
+  border-radius: inherit;
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.1)
+  );
+}

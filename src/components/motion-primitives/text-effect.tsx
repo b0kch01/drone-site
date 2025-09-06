@@ -134,7 +134,7 @@ const AnimationComponent: React.FC<{
             key={`char-${charIndex}`}
             aria-hidden="true"
             variants={variants}
-            className="inline-block whitespace-pre"
+            className="inline-block whitespace-pre font-gleam"
           >
             {char}
           </motion.span>

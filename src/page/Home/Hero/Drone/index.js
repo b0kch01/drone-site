@@ -8,7 +8,7 @@ const N_FRAMES = 254;
 const getFrame = (frame) =>
   `/drone_frames_high/drone_vid${frame.toString().padStart(3, "0")}.jpg`;
 
-export function Drone({ mouseX, mouseY, scrollY }) {
+export function Drone({ scrollY }) {
   const frames = useRef([]);
   const context = useRef(null);
 
@@ -16,7 +16,6 @@ export function Drone({ mouseX, mouseY, scrollY }) {
   const positionY = useTransform(scrollY, [0, 1], ["20vh", "0vh"]);
 
   useMotionValueEvent(scrollY, "change", (latestValue) => {
-    console.log(latestValue, scrollY);
     const index = Math.max(
       0,
       Math.min(Math.ceil(N_FRAMES * latestValue), N_FRAMES - 1),
@@ -36,7 +35,7 @@ export function Drone({ mouseX, mouseY, scrollY }) {
     context.current = canvas.getContext("2d");
 
     canvas.width = 1504;
-    canvas.height = 846;
+    canvas.height = 750;
 
     frames.current[0].onload = () => {
       context.current.drawImage(frames.current[0], 0, 0);

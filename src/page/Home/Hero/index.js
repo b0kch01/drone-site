@@ -11,8 +11,6 @@ import Image from "next/image";
 
 const R = 20;
 
-const MotionImage = motion(Image);
-
 export const Hero = memo(function Hero({ mouse }) {
   const hero = useRef(null);
 
@@ -46,10 +44,7 @@ export const Hero = memo(function Hero({ mouse }) {
   );
 
   return (
-    <div
-      ref={hero}
-      className="border-red-500 border-2 min-h-[300vh] flex flex-col items-center"
-    >
+    <div ref={hero} className="min-h-[300vh] flex flex-col items-center">
       <motion.div
         initial={{ y: 50, filter: "blur(5px)" }}
         animate={{ y: 0, filter: "blur(0px)" }}
@@ -73,7 +68,7 @@ export const Hero = memo(function Hero({ mouse }) {
         />
       </motion.div>
 
-      <Drone mouseX={mouseX} mouseY={mouseY} scrollY={smoothScroll} />
+      <Drone scrollY={smoothScroll} />
 
       <motion.div
         style={{
@@ -109,7 +104,6 @@ export const Hero = memo(function Hero({ mouse }) {
               per="char"
               preset="slide"
               className="text-[10vw] leading-[10vw] px-2 tracking-tighter"
-              segmentTransition="font-gleam"
               delay={2.2}
             >
               Surveillance
