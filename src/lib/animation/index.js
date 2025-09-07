@@ -1,4 +1,4 @@
-export const smoothSpring = { type: "spring", visualDuration: 1, bounce: 0 };
+export const smoothSpring = { type: "spring", visualDuration: 0.4, bounce: 0 };
 
 export const inViewFadeUp = {
   transition: smoothSpring,

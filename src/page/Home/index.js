@@ -7,6 +7,7 @@ import { Flight } from "./Flight";
 import { Hero } from "./Hero";
 import { Introduction } from "./Introduction";
 import { Navigation } from "./Navigation";
+import { Contact } from "./Contact";
 
 export const Home = function Home() {
   const mouseX = useMotionValue(0.5);
@@ -36,8 +37,7 @@ export const Home = function Home() {
 
       <Introduction />
       <Flight />
-
-      <div className="h-[500vh]" />
+      <Contact />
     </div>
   );
 };

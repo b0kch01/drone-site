@@ -1,4 +1,3 @@
-import { inViewFadeUp } from "@/lib/animation";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
@@ -25,7 +24,7 @@ export function Introduction() {
     >
       <div className="sticky overflow-hidden top-0 flex flex-col items-center justify-center min-h-screen">
         <motion.h1
-          className="text-6xl text-center tracking-tighter p-5 text-foreground/50 max-w-6xl"
+          className="text-2xl lg:text-6xl md:text-4xl text-center tracking-tighter p-5 text-foreground/50 max-w-6xl"
           style={{ opacity, scale, filter: blur }}
         >
           The <span className="text-foreground">Myotis Drone</span> is a

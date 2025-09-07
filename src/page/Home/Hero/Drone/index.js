@@ -47,11 +47,11 @@ export function Drone({ scrollY }) {
       initial={{ scale: 0.8, y: "-5vh", filter: "blur(10px)", opacity: 0 }}
       animate={{ scale: 1, y: 0, filter: "blur(0px)", opacity: 1 }}
       transition={{ type: "spring", visualDuration: 2, bounce: 0, delay: 2 }}
-      className="overflow-y-hidden sticky left-0 top-0 h-screen w-full flex items-center justify-center mb-[-50vh]"
+      className="overflow-hidden sticky left-0 top-0 h-screen w-full flex items-center justify-center mb-[-50vh]"
     >
       <motion.canvas
         style={{ scale, y: positionY }}
-        className="w-full"
+        className="md:w-full"
         id="drone"
       />
     </motion.div>

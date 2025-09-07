@@ -11,18 +11,20 @@ export function Navigation() {
       )}
     >
       <div className="text-lg font-mono">
-        <a href="#">Drone Co.</a>
+        <a href="#">Myotis</a>
       </div>
 
       <div className="grow" />
 
       <div
-        className={cn("absolute flex text-center text-sm *:px-2", styles.links)}
+        className={cn(
+          "hidden sm:flex absolute text-center text-sm *:px-2",
+          styles.links,
+        )}
       >
-        <a href="#">About</a>
-        <a href="#tech">Tech</a>
-        <a href="#">Team</a>
-        <a href="#">Contact</a>
+        <a href="#">Home</a>
+        <a href="#tech">Technology</a>
+        <a href="#contact">Contact</a>
       </div>
 
       <div>

@@ -1,14 +1,7 @@
-import {
-  useScroll,
-  useTransform,
-  motion,
-  useMotionValueEvent,
-  useSpring,
-} from "motion/react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
-import { Box } from "./Box";
-import { Boxes } from "./Boxes";
-import { Section } from "./Section";
+import { FlightSystemsSection } from "./FlightSystemsSection";
+import { AIVisionSection } from "./AIVisionSection";
 
 export function Flight() {
   const sectionRef = useRef(null);
@@ -29,7 +22,7 @@ export function Flight() {
     <div ref={sectionRef}>
       <motion.div
         style={{ width }}
-        className="pointer-events-auto gap-6 flex h-screen sticky top-0 items-center"
+        className="pointer-events-auto gap-6 flex md:h-screen md:sticky top-0 items-center"
       >
         <motion.div className="h-full">
           <video
@@ -52,9 +45,9 @@ export function Flight() {
           </video>
         </motion.div>
       </motion.div>
-      <div className="ml-[50vw]">
-        <Section scrollProgress={scrollYProgress} />
-        <Section scrollProgress={scrollYProgress} />
+      <div className="md:ml-[50vw]">
+        <FlightSystemsSection scrollProgress={scrollYProgress} />
+        <AIVisionSection scrollProgress={scrollYProgress} />
       </div>
     </div>
   );

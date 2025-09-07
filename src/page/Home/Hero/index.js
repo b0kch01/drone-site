@@ -11,7 +11,7 @@ import Image from "next/image";
 
 const R = 20;
 
-const MotionImage = motion(Image);
+const MotionImage = motion.create(Image);
 
 export const Hero = memo(function Hero({ mouse }) {
   const hero = useRef(null);
@@ -55,7 +55,7 @@ export const Hero = memo(function Hero({ mouse }) {
           initial={{ y: 20, scale: 1.5, filter: "blur(0px)" }}
           animate={{ y: 0, scale: 1, filter: "blur(0px)" }}
           transition={{ delay: 0, duration: 4 }}
-          className="w-full absolute"
+          className="w-auto h-full md:w-full absolute"
           src="/svg/stars.svg"
           width={0}
           height={0}
@@ -65,7 +65,7 @@ export const Hero = memo(function Hero({ mouse }) {
           initial={{ y: 50, scale: 2, filter: "blur(0px)" }}
           animate={{ y: 0, scale: 1, filter: "blur(0px)" }}
           transition={{ delay: 0, duration: 4 }}
-          className="w-[40%] absolute"
+          className="w-auto h-full md:w-[40%] absolute"
           src="/svg/circles.svg"
           width={0}
           height={0}
@@ -108,7 +108,7 @@ export const Hero = memo(function Hero({ mouse }) {
               style={{ x: positionXHeavy, y: positionYHeavy }}
               per="char"
               preset="slide"
-              className="text-[10vw] leading-[10vw] px-2 tracking-tighter"
+              className="text-6xl md:text-[10vw] md:leading-[10vw] px-2 tracking-tighter"
               delay={2.2}
             >
               Surveillance
