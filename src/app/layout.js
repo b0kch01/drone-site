@@ -1,6 +1,12 @@
-import { Xanh_Mono } from "next/font/google";
+import { Xanh_Mono, Geist } from "next/font/google";
 
 import "./globals.css";
+
+const geist = Geist({
+  weight: "variable",
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
 const xahnMono = Xanh_Mono({
   weight: "400",
@@ -16,7 +22,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className={`${xahnMono.variable} antialiased`}>{children}</body>
+      <body className={`${xahnMono.variable} ${geist.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
