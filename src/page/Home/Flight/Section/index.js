@@ -24,7 +24,7 @@ function Section({ children }) {
     offset: ["start center", "end center"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0.9, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.6, 1], [0, 1, 1, 0]);
   const blur = useTransform(
     scrollYProgress,
