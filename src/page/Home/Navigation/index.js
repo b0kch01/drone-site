@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 import styles from "./styles.module.css";
@@ -11,7 +13,16 @@ export function Navigation() {
       )}
     >
       <div className="text-lg font-mono">
-        <a href="#">Myotis</a>
+        <a href="#" className="flex gap-2">
+          <Image
+            width={0}
+            height={0}
+            alt=""
+            className="w-5"
+            src="/svg/logo.svg"
+          />{" "}
+          MYOTIS
+        </a>
       </div>
 
       <div className="grow" />
@@ -29,7 +40,7 @@ export function Navigation() {
 
       <div>
         <a
-          className="text-sm font-medium bg-white py-1.5 px-4 text-black"
+          className="text-sm font-medium bg-white py-1.5 px-4 text-black rounded"
           href="#"
         >
           Book a Demo

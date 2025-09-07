@@ -65,7 +65,7 @@ export function Contact() {
                 href="#"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center px-10 py-5 bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors text-lg"
+                className="inline-flex items-center justify-center px-10 py-5 bg-foreground rounded text-background font-semibold hover:bg-foreground/90 transition-colors text-lg"
               >
                 Schedule Demo
                 <ArrowRightIcon className="ml-3 h-5 w-5" />
@@ -74,7 +74,7 @@ export function Contact() {
                 href="#"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center px-10 py-5 border-2 border-foreground text-foreground font-semibold hover:bg-foreground hover:text-background transition-colors text-lg"
+                className="inline-flex items-center justify-center px-10 py-5 border-2 border-foreground rounded text-foreground font-semibold hover:bg-foreground hover:text-background transition-colors text-lg"
               >
                 View Documentation
               </motion.a>
