@@ -29,6 +29,8 @@ export function Flight() {
             className="object-cover w-full h-full"
             loop={true}
             autoPlay
+            playsInline
+            controls={false}
             muted={true}
           >
             <source src="/videos/flight.mp4" type="video/mp4" />
@@ -39,6 +41,8 @@ export function Flight() {
             className="object-cover object-[70%] w-full h-full"
             loop={true}
             autoPlay
+            playsInline
+            controls={false}
             muted={true}
           >
             <source src="/videos/takeoff.mp4" type="video/mp4" />
