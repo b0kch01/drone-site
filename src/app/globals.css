@@ -13,6 +13,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-xahn-mono);
+  --default-font-family: var(--font-sans);
 }
 
 html {
