@@ -13,7 +13,7 @@ export function Drone({ scrollY }) {
   const context = useRef(null);
 
   const scale = useTransform(scrollY, [0, 1], [0.6, 1]);
-  const positionY = useTransform(scrollY, [0, 1], ["20vh", "0vh"]);
+  const positionY = useTransform(scrollY, [0, 1], ["30vh", "0vh"]);
 
   useMotionValueEvent(scrollY, "change", (latestValue) => {
     const index = Math.max(
@@ -34,8 +34,8 @@ export function Drone({ scrollY }) {
     const canvas = document.getElementById("drone");
     context.current = canvas.getContext("2d");
 
-    canvas.width = 1504;
-    canvas.height = 750;
+    canvas.width = 1500;
+    canvas.height = 500;
 
     frames.current[0].onload = () => {
       context.current.drawImage(frames.current[0], 0, 0);
@@ -47,7 +47,7 @@ export function Drone({ scrollY }) {
       initial={{ scale: 0.8, y: "-5vh", filter: "blur(10px)", opacity: 0 }}
       animate={{ scale: 1, y: 0, filter: "blur(0px)", opacity: 1 }}
       transition={{ type: "spring", visualDuration: 2, bounce: 0, delay: 2 }}
-      className="overflow-y-hidden sticky left-0 top-0 h-screen w-full flex items-center justify-center"
+      className="overflow-y-hidden sticky left-0 top-0 h-screen w-full flex items-center justify-center mb-[-50vh]"
     >
       <motion.canvas
         style={{ scale, y: positionY }}

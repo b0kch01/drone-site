@@ -11,12 +11,14 @@ import Image from "next/image";
 
 const R = 20;
 
+const MotionImage = motion(Image);
+
 export const Hero = memo(function Hero({ mouse }) {
   const hero = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: hero,
-    offset: ["start start", "end center"],
+    offset: ["start start", "end start"],
   });
 
   const smoothScroll = useSpring(scrollYProgress, {
@@ -35,7 +37,7 @@ export const Hero = memo(function Hero({ mouse }) {
   const scrollYOffset = useTransform(smoothScroll, [0.2, 1], ["0", "-15vh"]);
   const scrollGap = useTransform(smoothScroll, [0, 1], ["0", "5vh"]);
   const scrollScale = useTransform(smoothScroll, [0, 1], [1, 0.4]);
-  const scrollOpacity = useTransform(scrollYProgress, [0.4, 0.9], [1, 0]);
+  const scrollOpacity = useTransform(scrollYProgress, [0.4, 0.8], [1, 0]);
 
   const scrollBlur = useTransform(
     smoothScroll,
@@ -46,20 +48,23 @@ export const Hero = memo(function Hero({ mouse }) {
   return (
     <div ref={hero} className="min-h-[300vh] flex flex-col items-center">
       <motion.div
-        initial={{ y: 50, filter: "blur(5px)" }}
-        animate={{ y: 0, filter: "blur(0px)" }}
-        transition={{ delay: 1, duration: 4 }}
         style={{ opacity: scrollOpacity }}
         className="fixed pointer-events-none flex items-center justify-center top-0 z-10 w-full h-full faded"
       >
-        <Image
+        <MotionImage
+          initial={{ y: 20, scale: 1.5, filter: "blur(0px)" }}
+          animate={{ y: 0, scale: 1, filter: "blur(0px)" }}
+          transition={{ delay: 0, duration: 4 }}
           className="w-full absolute"
           src="/svg/stars.svg"
           width={0}
           height={0}
           alt=""
         />
-        <Image
+        <MotionImage
+          initial={{ y: 50, scale: 2, filter: "blur(0px)" }}
+          animate={{ y: 0, scale: 1, filter: "blur(0px)" }}
+          transition={{ delay: 0, duration: 4 }}
           className="w-[40%] absolute"
           src="/svg/circles.svg"
           width={0}

@@ -21,10 +21,9 @@ export function Introduction() {
   return (
     <div
       ref={sectionRef}
-      id="tech"
-      className="flex flex-col items-center min-h-[200vh]"
+      className="relative flex flex-col items-center min-h-[200vh]"
     >
-      <div className="sticky top-0 flex flex-col items-center justify-center min-h-screen">
+      <div className="sticky overflow-hidden top-0 flex flex-col items-center justify-center min-h-screen">
         <motion.h1
           className="text-6xl text-center tracking-tighter p-5 text-foreground/50 max-w-6xl"
           style={{ opacity, scale, filter: blur }}
@@ -34,6 +33,8 @@ export function Introduction() {
           AI and advanced accelerator technology.
         </motion.h1>
       </div>
+
+      <span id="tech" className="z-[-5] bottom-0 absolute min-h-screen" />
     </div>
   );
 }
