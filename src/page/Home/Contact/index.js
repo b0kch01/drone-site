@@ -5,9 +5,42 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
+import { TextScramble } from "@/components/motion-primitives/text-scramble";
+import { useRef, useEffect, useState } from "react";
+import NumberFlow from "@number-flow/react";
 
 export function Contact() {
+  const footerRef = useRef(null);
+  const inView = useInView(footerRef, { amount: 0.5 });
+
+  const statsRef = useRef(null);
+  const statsInView = useInView(statsRef, { amount: 0.3 });
+  const [statsValues, setStatsValues] = useState({
+    uptime: 0,
+    flightTime: 0,
+    range: 0,
+    support: 0,
+  });
+
+  useEffect(() => {
+    if (statsInView) {
+      setStatsValues({
+        uptime: 99.9,
+        flightTime: 45,
+        range: 10,
+        support: 24,
+      });
+    } else {
+      setStatsValues({
+        uptime: 0,
+        flightTime: 0,
+        range: 0,
+        support: 0,
+      });
+    }
+  }, [statsInView]);
+
   return (
     <div className="bg-background text-foreground" id="contact">
       {/* Call to Action Section */}
@@ -32,7 +65,7 @@ export function Contact() {
                 href="#"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center px-10 py-5 bg-foreground text-background font-semibold rounded-full hover:bg-foreground/90 transition-colors text-lg"
+                className="inline-flex items-center justify-center px-10 py-5 bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors text-lg"
               >
                 Schedule Demo
                 <ArrowRightIcon className="ml-3 h-5 w-5" />
@@ -41,7 +74,7 @@ export function Contact() {
                 href="#"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center px-10 py-5 border-2 border-foreground text-foreground font-semibold rounded-full hover:bg-foreground hover:text-background transition-colors text-lg"
+                className="inline-flex items-center justify-center px-10 py-5 border-2 border-foreground text-foreground font-semibold hover:bg-foreground hover:text-background transition-colors text-lg"
               >
                 View Documentation
               </motion.a>
@@ -50,26 +83,53 @@ export function Contact() {
 
           {/* Stats Grid */}
           <motion.div
+            ref={statsRef}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
           >
             <div className="text-center">
-              <div className="text-4xl font-bold text-foreground">99.9%</div>
-              <div className="text-foreground/50 mt-2">Uptime Guaranteed</div>
+              <div className="text-4xl font-mono font-bold text-foreground">
+                <NumberFlow
+                  value={statsValues.uptime}
+                  format={{
+                    style: "decimal",
+                    minimumFractionDigits: 1,
+                    maximumFractionDigits: 1,
+                  }}
+                />
+                %
+              </div>
+              <div className="text-foreground/50 mt-2 text-sm">
+                Uptime Guaranteed
+              </div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-foreground">45+</div>
-              <div className="text-foreground/50 mt-2">Minutes Flight Time</div>
+              <div className="text-4xl font-mono font-bold text-foreground">
+                <NumberFlow value={statsValues.flightTime} />+
+              </div>
+              <div className="text-foreground/50 mt-2 text-sm">
+                Minutes Flight Time
+              </div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-foreground">10km</div>
-              <div className="text-foreground/50 mt-2">Operating Range</div>
+              <div className="text-4xl font-mono font-bold text-foreground">
+                <NumberFlow value={statsValues.range} />
+                km
+              </div>
+              <div className="text-foreground/50 mt-2 text-sm">
+                Operating Range
+              </div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-foreground">24/7</div>
-              <div className="text-foreground/50 mt-2">Support Available</div>
+              <div className="text-4xl font-mono font-bold text-foreground">
+                <NumberFlow value={statsValues.support} />
+                /7
+              </div>
+              <div className="text-foreground/50 mt-2 text-sm">
+                Support Available
+              </div>
             </div>
           </motion.div>
         </div>
@@ -81,8 +141,18 @@ export function Contact() {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8">
               {/* Company Info */}
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold mb-2">MYOTIS</h3>
+              <div className="flex-1" ref={footerRef}>
+                <h3 className="text-2xl font-mono font-bold mb-2 uppercase tracking-wider">
+                  <TextScramble
+                    characterSet="01_- "
+                    duration={1.2}
+                    speed={0.03}
+                    trigger={inView}
+                    as="span"
+                  >
+                    MYOTIS
+                  </TextScramble>
+                </h3>
                 <p className="text-foreground/50 mb-4 max-w-md">
                   Autonomous aerial systems powered by advanced AI for
                   mission-critical operations.

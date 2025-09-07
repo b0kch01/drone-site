@@ -29,7 +29,7 @@ export function Navigation() {
 
       <div>
         <a
-          className="text-sm font-medium bg-white rounded-full py-1.5 px-4 text-black"
+          className="text-sm font-medium bg-white py-1.5 px-4 text-black"
           href="#"
         >
           Book a Demo
