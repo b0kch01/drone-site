@@ -11,7 +11,7 @@ export function SectionTitle({ children }) {
       ref={headerRef}
       className="uppercase font-bold text-xl text-foreground/50 font-mono"
     >
-      <TextScramble characterSet="_ " duration={1} trigger={inView}>
+      <TextScramble characterSet="01-_ " duration={1} trigger={inView}>
         {children}
       </TextScramble>
     </h3>
