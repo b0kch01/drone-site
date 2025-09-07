@@ -1,4 +1,4 @@
-import { Xanh_Mono, Geist } from "next/font/google";
+import { Victor_Mono, Geist } from "next/font/google";
 
 import "./globals.css";
 
@@ -8,7 +8,7 @@ const geist = Geist({
   subsets: ["latin"],
 });
 
-const xahnMono = Xanh_Mono({
+const xahnMono = Victor_Mono({
   weight: "400",
   variable: "--font-xahn-mono",
   subsets: ["latin"],
