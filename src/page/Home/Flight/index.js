@@ -33,7 +33,7 @@ export function Flight() {
             controls={false}
             muted={true}
           >
-            <source src="/videos/flight.mp4" type="video/mp4" />
+            {/* <source src="/videos/flight.mp4" type="video/mp4" /> */}
           </video>
         </motion.div>
         <motion.div className="h-full">
@@ -45,7 +45,7 @@ export function Flight() {
             controls={false}
             muted={true}
           >
-            <source src="/videos/takeoff.mp4" type="video/mp4" />
+            {/* <source src="/videos/takeoff.mp4" type="video/mp4" /> */}
           </video>
         </motion.div>
       </motion.div>
