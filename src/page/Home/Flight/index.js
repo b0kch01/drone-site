@@ -24,7 +24,8 @@ export function Flight() {
         style={{ width }}
         className="pointer-events-auto gap-6 flex md:h-screen md:sticky top-0 items-center"
       >
-        <motion.div className="h-full">
+        <motion.div className="h-full flex-1">
+          <div className="bg-foreground/15 w-full h-full" />
           {/* <video */}
           {/*   className="object-cover w-full h-full" */}
           {/*   loop={true} */}
@@ -36,7 +37,8 @@ export function Flight() {
           {/*   <source src="/videos/flight.mp4" type="video/mp4" /> */}
           {/* </video> */}
         </motion.div>
-        <motion.div className="h-full">
+        <motion.div className="h-full flex-1">
+          <div className="bg-foreground/15 w-full h-full" />
           {/* <video */}
           {/*   className="object-cover object-[70%] w-full h-full" */}
           {/*   loop={true} */}
