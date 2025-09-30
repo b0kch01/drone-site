@@ -29,15 +29,18 @@ export const Hero = memo(function Hero({ mouse }) {
   const mouseX = useSpring(mouse.x);
   const mouseY = useSpring(mouse.y);
 
-  const positionX = useTransform(mouseX, [0, 1], [-R, R]);
-  const positionY = useTransform(mouseY, [0, 1], [-R, R]);
-  const positionXHeavy = useTransform(mouseX, [0, 1], [-R / 2, R / 2]);
-  const positionYHeavy = useTransform(mouseY, [0, 1], [-R / 2, R / 2]);
+  const positionX = useTransform(mouseX, [0, 1], [R, -R]);
+  const positionY = useTransform(mouseY, [0, 1], [R, -R]);
+  const positionXHeavy = useTransform(mouseX, [0, 1], [R / 2, -R / 2]);
+  const positionYHeavy = useTransform(mouseY, [0, 1], [R / 2, -R / 2]);
 
   const scrollYOffset = useTransform(smoothScroll, [0.2, 1], ["0", "-15vh"]);
   const scrollGap = useTransform(smoothScroll, [0, 1], ["0", "5vh"]);
   const scrollScale = useTransform(smoothScroll, [0, 1], [1, 0.4]);
+  const scrollScaleInvert = useTransform(smoothScroll, [0, 1], [1, 4]);
   const scrollOpacity = useTransform(scrollYProgress, [0.4, 0.8], [1, 0]);
+
+  const scrollYSky = useTransform(smoothScroll, [0, 1], ["0", "-30vh"]);
 
   const scrollBlur = useTransform(
     smoothScroll,
@@ -52,6 +55,7 @@ export const Hero = memo(function Hero({ mouse }) {
         className="fixed pointer-events-none flex items-center justify-center top-0 z-10 w-full h-full faded"
       >
         <MotionImage
+          style={{ y: scrollYSky }}
           initial={{ y: 20, scale: 1.5, filter: "blur(0px)" }}
           animate={{ y: 0, scale: 1, filter: "blur(0px)" }}
           transition={{ delay: 0, duration: 4 }}
@@ -64,6 +68,7 @@ export const Hero = memo(function Hero({ mouse }) {
         <MotionImage
           initial={{ y: 50, scale: 2, filter: "blur(0px)" }}
           animate={{ y: 0, scale: 1, filter: "blur(0px)" }}
+          style={{ scale: scrollScaleInvert }}
           transition={{ delay: 0, duration: 4 }}
           className="w-auto h-full md:w-[40%] absolute"
           src="/svg/circles.svg"
@@ -96,7 +101,7 @@ export const Hero = memo(function Hero({ mouse }) {
             speedReveal={0.5}
             speedSegment={0.4}
           >
-            Welcome to Modern
+            Welcome to
           </TextEffect>
 
           <motion.div
@@ -108,10 +113,10 @@ export const Hero = memo(function Hero({ mouse }) {
               style={{ x: positionXHeavy, y: positionYHeavy }}
               per="char"
               preset="slide"
-              className="text-6xl md:text-[10vw] md:leading-[10vw] px-2 tracking-tighter"
+              className="text-6xl md:text-[10vw] md:leading-[10vw] px-2 tracking-tighter md:tracking-[-8px]"
               delay={2.2}
             >
-              Surveillance
+              Modern ISR
             </TextEffect>
           </motion.div>
         </motion.h1>

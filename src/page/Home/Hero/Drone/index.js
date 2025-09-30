@@ -51,7 +51,7 @@ export function Drone({ scrollY }) {
     >
       <motion.canvas
         style={{ scale, y: positionY }}
-        className="md:w-full"
+        className="md:w-full w-[300%]"
         id="drone"
       />
     </motion.div>

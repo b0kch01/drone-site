@@ -11,6 +11,12 @@ export function Flight() {
     offset: ["start start", "end end"],
   });
 
+  const topVideoOpacity = useTransform(
+    scrollYProgress,
+    [2 / 4, 3 / 4],
+    [1, 0.1],
+  );
+
   const smoothScroll = useSpring(scrollYProgress, {
     visualDuration: 0.3,
     bounce: 0.2,
@@ -24,30 +30,41 @@ export function Flight() {
         style={{ width }}
         className="pointer-events-auto gap-6 flex md:h-screen md:sticky top-0 items-center"
       >
-        <motion.div className="h-full flex-1">
+        <motion.div className="relative h-full flex-1">
           {/* <div className="bg-foreground/15 w-full h-full" /> */}
           <video
-            className="object-cover w-full h-full"
+            className="absolute object-cover object-top-left w-full h-full"
             loop={true}
             autoPlay
             playsInline
             controls={false}
             muted={true}
           >
-            <source src="/videos/car-small.mp4" type="video/mp4" />
+            <source src="/videos/small-thermal.mp4" type="video/mp4" />
           </video>
+          <motion.video
+            className="absolute object-cover object-top-left w-full h-full"
+            style={{ opacity: topVideoOpacity }}
+            loop={true}
+            autoPlay
+            playsInline
+            controls={false}
+            muted={true}
+          >
+            <source src="/videos/small-car.mp4" type="video/mp4" />
+          </motion.video>
         </motion.div>
         <motion.div className="h-full flex-1">
           {/* <div className="bg-foreground/15 w-full h-full" /> */}
           <video
-            className="object-cover object-[70%] w-full h-full"
+            className="object-cover object-right w-full h-full"
             loop={true}
             autoPlay
             playsInline
             controls={false}
             muted={true}
           >
-            <source src="/videos/thermal-small.mp4" type="video/mp4" />
+            <source src="/videos/square.mp4" type="video/mp4" />
           </video>
         </motion.div>
       </motion.div>
