@@ -2,6 +2,7 @@ import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
 import { FlightSystemsSection } from "./FlightSystemsSection";
 import { AIVisionSection } from "./AIVisionSection";
+import { FlightVideo } from "./FlightVideo";
 
 export function Flight() {
   const sectionRef = useRef(null);
@@ -10,12 +11,6 @@ export function Flight() {
     target: sectionRef,
     offset: ["start start", "end end"],
   });
-
-  const topVideoOpacity = useTransform(
-    scrollYProgress,
-    [2 / 4, 3 / 4],
-    [1, 0.1],
-  );
 
   const smoothScroll = useSpring(scrollYProgress, {
     visualDuration: 0.3,
@@ -32,27 +27,7 @@ export function Flight() {
       >
         <motion.div className="relative h-full flex-1">
           {/* <div className="bg-foreground/15 w-full h-full" /> */}
-          <video
-            className="absolute object-cover object-top-left w-full h-full"
-            loop={true}
-            autoPlay
-            playsInline
-            controls={false}
-            muted={true}
-          >
-            <source src="/videos/small-thermal.mp4" type="video/mp4" />
-          </video>
-          <motion.video
-            className="absolute object-cover object-top-left w-full h-full"
-            style={{ opacity: topVideoOpacity }}
-            loop={true}
-            autoPlay
-            playsInline
-            controls={false}
-            muted={true}
-          >
-            <source src="/videos/small-car.mp4" type="video/mp4" />
-          </motion.video>
+          <FlightVideo scrollYProgress={scrollYProgress} />
         </motion.div>
         <motion.div className="h-full flex-1">
           {/* <div className="bg-foreground/15 w-full h-full" /> */}
