@@ -3,10 +3,10 @@
 import { motion, useMotionValueEvent, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
 
-const N_FRAMES = 254;
+const N_FRAMES = 191;
 
 const getFrame = (frame) =>
-  `/drone_frames_high/drone_vid${frame.toString().padStart(3, "0")}.jpg`;
+  `/drone_frames_super/drone_vid${frame.toString().padStart(3, "0")}.jpg`;
 
 export function Drone({ scrollY }) {
   const frames = useRef([]);
@@ -34,8 +34,8 @@ export function Drone({ scrollY }) {
     const canvas = document.getElementById("drone");
     context.current = canvas.getContext("2d");
 
-    canvas.width = 1500;
-    canvas.height = 500;
+    canvas.width = 1920;
+    canvas.height = 960;
 
     frames.current[0].onload = () => {
       context.current.drawImage(frames.current[0], 0, 0);
