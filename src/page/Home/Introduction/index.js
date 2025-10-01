@@ -28,7 +28,7 @@ export function Introduction() {
           style={{ opacity, scale, filter: blur }}
         >
           <span className="text-foreground">Myotis</span> brings
-          state-of-the-art autonomy and AI Computer vision to drones. Our
+          state-of-the-art autonomy and AI computer vision to drones. Our
           modular payload transforms standard UAVs into first-responder assets,
           delivering on-edge intelligence and secure, mission-critical insights
           without reliance on the cloud.
