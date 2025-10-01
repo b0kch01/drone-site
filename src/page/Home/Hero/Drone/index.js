@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 const N_FRAMES = 191;
 
 const getFrame = (frame) =>
-  `/drone_frames_super/drone_vid${frame.toString().padStart(3, "0")}.jpg`;
+  `/drone_frames_super/drone_vid${frame.toString().padStart(3, "0")}.webp`;
 
 export function Drone({ scrollY }) {
   const frames = useRef([]);
@@ -20,7 +20,11 @@ export function Drone({ scrollY }) {
       0,
       Math.min(Math.ceil(N_FRAMES * latestValue), N_FRAMES - 1),
     );
-    context.current?.drawImage(frames.current[index], 0, 0);
+    context.current?.drawImage(
+      frames.current[Math.min(index, frames.current.length - 1)],
+      0,
+      0,
+    );
   });
 
   useEffect(() => {

@@ -1,3 +1,4 @@
+import { sleep } from "@/lib/utils";
 import { motion, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
 
@@ -25,10 +26,13 @@ export function FlightVideo({ scrollYProgress }) {
       ]);
       thermalRef.current.src = thermalSrc;
       originalRef.current.src = originalSrc;
+
       thermalRef.current.currentTime = 0;
       originalRef.current.currentTime = 0;
-      thermalRef.current.play();
+
+      await sleep(200);
       originalRef.current.play();
+      thermalRef.current.play();
     })();
   }, []);
 

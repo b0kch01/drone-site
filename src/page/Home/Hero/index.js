@@ -1,7 +1,15 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { memo, useRef } from "react";
+import {
+  animate,
+  motion,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionTemplate,
+} from "motion/react";
+import { memo, useEffect, useRef } from "react";
 
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { TextScramble } from "@/components/motion-primitives/text-scramble";
@@ -38,15 +46,30 @@ export const Hero = memo(function Hero({ mouse }) {
   const scrollGap = useTransform(smoothScroll, [0, 1], ["0", "5vh"]);
   const scrollScale = useTransform(smoothScroll, [0, 1], [1, 0.4]);
   const scrollScaleInvert = useTransform(smoothScroll, [0, 1], [1, 4]);
-  const scrollOpacity = useTransform(scrollYProgress, [0.4, 0.8], [1, 0]);
+  const scrollOpacity = useTransform(smoothScroll, [0.4, 0.8], [1, 0]);
 
-  const scrollYSky = useTransform(smoothScroll, [0, 1], ["0", "-30vh"]);
+  const scrollYSky = useTransform(smoothScroll, [0, 1], [0, -30]);
+  const introYSky = useMotionValue(10);
+  const totalYSkyValue = useTransform(() => scrollYSky.get() + introYSky.get());
+  const totalYSky = useMotionTemplate`${totalYSkyValue}vh`;
+
+  const introScale = useMotionValue(2);
+  const totalScale = useTransform(
+    () => scrollScaleInvert.get() * introScale.get(),
+  );
 
   const scrollBlur = useTransform(
     smoothScroll,
     [0.2, 1],
     ["blur(0px)", "blur(20px)"],
   );
+
+  useEffect(() => {
+    console.log("Init animations");
+
+    animate(introYSky, 0, { duration: 4 });
+    animate(introScale, 1, { duration: 4 });
+  }, [introYSky, introScale]);
 
   return (
     <div ref={hero} className="min-h-[300vh] flex flex-col items-center">
@@ -55,10 +78,10 @@ export const Hero = memo(function Hero({ mouse }) {
         className="fixed pointer-events-none flex items-center justify-center top-0 z-10 w-full h-full faded"
       >
         <MotionImage
-          style={{ y: scrollYSky }}
-          initial={{ y: 20, scale: 1.5, filter: "blur(0px)" }}
-          animate={{ y: 0, scale: 1, filter: "blur(0px)" }}
-          transition={{ delay: 0, duration: 4 }}
+          initial={{ scale: 1.5, filter: "blur(0px)" }}
+          animate={{ scale: 1, filter: "blur(0px)" }}
+          style={{ y: totalYSky }}
+          transition={{ duration: 4 }}
           className="w-auto h-full md:w-full absolute"
           src="/svg/stars.svg"
           width={0}
@@ -66,10 +89,10 @@ export const Hero = memo(function Hero({ mouse }) {
           alt=""
         />
         <MotionImage
-          initial={{ y: 50, scale: 2, filter: "blur(0px)" }}
-          animate={{ y: 0, scale: 1, filter: "blur(0px)" }}
-          style={{ scale: scrollScaleInvert }}
-          transition={{ delay: 0, duration: 4 }}
+          initial={{ y: 50 }}
+          animate={{ y: 0 }}
+          style={{ scale: totalScale }}
+          transition={{ duration: 4 }}
           className="w-auto h-full md:w-[40%] absolute"
           src="/svg/circles.svg"
           width={0}
