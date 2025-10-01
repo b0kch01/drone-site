@@ -1,9 +1,9 @@
 import Image from "next/image";
+import { ArrowBigDown, ArrowDown, ArrowDownIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
 import styles from "./styles.module.css";
-import { ArrowBigDown, ArrowDown, ArrowDownIcon } from "lucide-react";
 
 export function Navigation() {
   return (
