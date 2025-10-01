@@ -11,6 +11,8 @@ export function FlightVideo({ scrollYProgress }) {
 
   const thermalRef = useRef(null);
   const originalRef = useRef(null);
+  const thermalSourceRef = useRef(null);
+  const originalSourceRef = useRef(null);
 
   async function preload(url) {
     const res = await fetch(url);
@@ -28,17 +30,20 @@ export function FlightVideo({ scrollYProgress }) {
 
     (async function loadVideos() {
       const [thermalSrc, originalSrc] = await Promise.all([
-        preload("/videos/small-thermal.mp4"),
         preload("/videos/small-car.mp4"),
+        preload("/videos/small-thermal.mp4"),
       ]);
-      thermalRef.current.src = thermalSrc;
-      originalRef.current.src = originalSrc;
 
-      thermalRef.current.addEventListener("ended", resetVideos);
+      if (thermalSourceRef.current) thermalSourceRef.current.src = thermalSrc;
+      if (originalSourceRef.current)
+        originalSourceRef.current.src = originalSrc;
+
+      console.log("Loaded footage", thermalSourceRef.current.src);
+      console.log("Loaded footage", originalSourceRef.current.src);
+
+      thermalRef.current?.addEventListener("ended", resetVideos);
       resetVideos();
     })();
-
-    return () => thermalRef.current.removeEventListener("ended", resetVideos);
   }, []);
 
   return (
@@ -51,7 +56,7 @@ export function FlightVideo({ scrollYProgress }) {
         controls={false}
         muted={true}
       >
-        <source src={null} type="video/mp4" />
+        <source ref={thermalSourceRef} src={null} type="video/mp4" />
       </video>
       <motion.video
         ref={originalRef}
@@ -61,7 +66,7 @@ export function FlightVideo({ scrollYProgress }) {
         controls={false}
         muted={true}
       >
-        <source src={null} type="video/mp4" />
+        <source ref={originalSourceRef} src={null} type="video/mp4" />
       </motion.video>
     </>
   );
