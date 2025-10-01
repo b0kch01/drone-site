@@ -19,6 +19,13 @@ export function FlightVideo({ scrollYProgress }) {
   }
 
   useEffect(() => {
+    function resetVideos() {
+      thermalRef.current.currentTime = 0;
+      originalRef.current.currentTime = 0;
+      originalRef.current.play();
+      thermalRef.current.play();
+    }
+
     (async function loadVideos() {
       const [thermalSrc, originalSrc] = await Promise.all([
         preload("/videos/small-thermal.mp4"),
@@ -27,13 +34,11 @@ export function FlightVideo({ scrollYProgress }) {
       thermalRef.current.src = thermalSrc;
       originalRef.current.src = originalSrc;
 
-      thermalRef.current.currentTime = 0;
-      originalRef.current.currentTime = 0;
-
-      await sleep(200);
-      originalRef.current.play();
-      thermalRef.current.play();
+      thermalRef.current.addEventListener("ended", resetVideos);
+      resetVideos();
     })();
+
+    return () => thermalRef.current.removeEventListener("ended", resetVideos);
   }, []);
 
   return (
@@ -42,7 +47,6 @@ export function FlightVideo({ scrollYProgress }) {
       <video
         ref={thermalRef}
         className="absolute object-cover object-bottom w-full h-full"
-        loop={true}
         playsInline
         controls={false}
         muted={true}
@@ -53,7 +57,6 @@ export function FlightVideo({ scrollYProgress }) {
         ref={originalRef}
         className="absolute object-cover object-bottom w-full h-full"
         style={{ opacity: topVideoOpacity }}
-        loop={true}
         playsInline
         controls={false}
         muted={true}

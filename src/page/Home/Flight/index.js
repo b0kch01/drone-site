@@ -26,11 +26,9 @@ export function Flight() {
         className="pointer-events-auto gap-6 flex md:h-screen md:sticky top-0 items-center"
       >
         <motion.div className="relative h-full flex-1">
-          {/* <div className="bg-foreground/15 w-full h-full" /> */}
           <FlightVideo scrollYProgress={scrollYProgress} />
         </motion.div>
         <motion.div className="h-full flex-1">
-          {/* <div className="bg-foreground/15 w-full h-full" /> */}
           <video
             className="object-cover object-right w-full h-full"
             loop={true}
