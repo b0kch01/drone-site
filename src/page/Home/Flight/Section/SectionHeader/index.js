@@ -23,5 +23,5 @@ export function SectionDescription({ children }) {
 }
 
 export function SectionHeader({ children }) {
-  return <div className="flex flex-col gap-1.5 p-10">{children}</div>;
+  return <div className="flex flex-col gap-3 p-10">{children}</div>;
 }

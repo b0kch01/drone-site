@@ -10,7 +10,7 @@ export function FlightSystemsSection({ scrollProgress }) {
   return (
     <Section scrollProgress={scrollProgress}>
       <Section.Header>
-        <Section.Title>1 // FLIGHT SYSTEMS</Section.Title>
+        <Section.Title>1 // EDGE INTELLGINCE ENGINE</Section.Title>
         <Section.Description>
           Advanced autonomous navigation powered by next-generation AI and
           real-time sensor fusion. Our aerial platform delivers unmatched
@@ -45,7 +45,7 @@ export function FlightSystemsSection({ scrollProgress }) {
             Neural processing
           </Section.SubitemHeader>
           <Section.SubitemBody>
-            delivers 8 TOPS of edge computing for autonomous decision-making
+            delivers 100+ TOPS of edge computing for autonomous decision-making
           </Section.SubitemBody>
         </Section.Subitem>
         {/* <Section.Subitem> */}
@@ -61,4 +61,3 @@ export function FlightSystemsSection({ scrollProgress }) {
     </Section>
   );
 }
-

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 import styles from "./styles.module.css";
+import { ArrowBigDown, ArrowDown, ArrowDownIcon } from "lucide-react";
 
 export function Navigation() {
   return (
@@ -40,10 +41,16 @@ export function Navigation() {
 
       <div>
         <a
-          className="text-sm font-medium bg-white py-1.5 px-4 text-black rounded"
-          href="#"
+          className="group flex text-sm font-medium items-center bg-white py-1.5 px-4 text-black rounded"
+          href="#contact"
         >
           Book a Demo
+          <ArrowDownIcon
+            width={14}
+            height={14}
+            strokeWidth={2.5}
+            className="w-0 -rotate-90 group-hover:ml-1 group-hover:rotate-0 group-hover:w-[14px] transition-all"
+          />
         </a>
       </div>
     </header>

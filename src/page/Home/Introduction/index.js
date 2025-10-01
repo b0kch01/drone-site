@@ -24,12 +24,14 @@ export function Introduction() {
     >
       <div className="sticky overflow-hidden top-0 flex flex-col items-center justify-center min-h-screen">
         <motion.h1
-          className="text-2xl lg:text-6xl md:text-4xl text-center tracking-tighter p-5 text-foreground/50 max-w-6xl"
+          className="text-2xl lg:text-5xl md:text-4xl text-center tracking-tighter leading-[1.1] p-5 text-foreground/50 max-w-6xl"
           style={{ opacity, scale, filter: blur }}
         >
-          The <span className="text-foreground">Myotis Drone</span> is a
-          next-generation, autonomous fleet built for police forces, powered by
-          AI and advanced accelerator technology.
+          <span className="text-foreground">Myotis</span> brings
+          state-of-the-art autonomy and AI Computer vision to drones. Our
+          modular payload transforms standard UAVs into first-responder assets,
+          delivering on-edge intelligence and secure, mission-critical insights
+          without reliance on the cloud.
         </motion.h1>
       </div>
 

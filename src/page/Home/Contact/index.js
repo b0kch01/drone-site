@@ -1,10 +1,4 @@
-import {
-  ArrowRightIcon,
-  GithubIcon,
-  LinkedinIcon,
-  TwitterIcon,
-  YoutubeIcon,
-} from "lucide-react";
+import { ArrowRightIcon, LinkedinIcon, MailIcon } from "lucide-react";
 import { motion, useInView } from "motion/react";
 import { TextScramble } from "@/components/motion-primitives/text-scramble";
 import { useRef, useEffect, useState } from "react";
@@ -44,7 +38,7 @@ export function Contact() {
   return (
     <div className="bg-background text-foreground" id="contact">
       {/* Call to Action Section */}
-      <section className="px-6 py-32 md:py-48 lg:py-56 md:px-12 lg:px-24">
+      <section className="px-6 py-32 md:py-48 lg:py-32 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -62,7 +56,8 @@ export function Contact() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="#"
+                target="_blank"
+                href="mailto:info@myotisflight.com?body=Hello Myotis,"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center justify-center px-10 py-5 bg-foreground rounded text-background font-semibold hover:bg-foreground/90 transition-colors text-lg"
@@ -82,6 +77,7 @@ export function Contact() {
           </motion.div>
 
           {/* Stats Grid */}
+          {/*
           <motion.div
             ref={statsRef}
             initial={{ opacity: 0, y: 20 }}
@@ -132,6 +128,8 @@ export function Contact() {
               </div>
             </div>
           </motion.div>
+
+          */}
         </div>
       </section>
 
@@ -159,28 +157,16 @@ export function Contact() {
                 </p>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/myotis-flight"
                     className="text-foreground/50 hover:text-foreground transition-colors"
                   >
                     <LinkedinIcon className="h-5 w-5" />
                   </a>
                   <a
-                    href="#"
+                    href="mailto:info@myotisflight.com"
                     className="text-foreground/50 hover:text-foreground transition-colors"
                   >
-                    <TwitterIcon className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-foreground/50 hover:text-foreground transition-colors"
-                  >
-                    <GithubIcon className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-foreground/50 hover:text-foreground transition-colors"
-                  >
-                    <YoutubeIcon className="h-5 w-5" />
+                    <MailIcon className="h-5 w-5" />
                   </a>
                 </div>
               </div>
@@ -191,22 +177,16 @@ export function Contact() {
                   href="#"
                   className="text-foreground/50 hover:text-foreground transition-colors"
                 >
-                  Products
+                  Home
                 </a>
                 <a
-                  href="#"
+                  href="#tech"
                   className="text-foreground/50 hover:text-foreground transition-colors"
                 >
-                  Solutions
+                  Technology
                 </a>
                 <a
-                  href="#"
-                  className="text-foreground/50 hover:text-foreground transition-colors"
-                >
-                  Documentation
-                </a>
-                <a
-                  href="#"
+                  href="#contact"
                   className="text-foreground/50 hover:text-foreground transition-colors"
                 >
                   Contact
@@ -216,11 +196,11 @@ export function Contact() {
 
             {/* Bottom Bar */}
             <div className="pt-8 border-t border-foreground/10">
-              <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="flex flex-col md:flex-row justify-end items-center">
                 <div className="text-foreground/50 text-sm mb-4 md:mb-0">
-                  © 2026 Myotis. All rights reserved.
+                  © 2025 Myotis. All rights reserved.
                 </div>
-                <div className="flex space-x-6 text-sm">
+                <div className="flex space-x-6 text-sm hidden">
                   <a
                     href="#"
                     className="text-foreground/50 hover:text-foreground transition-colors"

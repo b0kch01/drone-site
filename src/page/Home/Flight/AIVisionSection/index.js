@@ -1,6 +1,7 @@
 import { Section } from "../Section";
 import {
   CameraIcon,
+  CuboidIcon,
   MonitorIcon,
   NetworkIcon,
   WifiIcon,
@@ -10,12 +11,11 @@ export function AIVisionSection({ scrollProgress }) {
   return (
     <Section scrollProgress={scrollProgress}>
       <Section.Header>
-        <Section.Title>2 // AI VISION PAYLOAD</Section.Title>
+        <Section.Title>2 // FULL PAYLOAD SYSTEM</Section.Title>
         <Section.Description>
-          Multi-spectral computer vision system with real-time analytics
-          streaming to cloud-based dashboards. Seamless integration of thermal,
-          RGB, and LiDAR sensors for comprehensive situational awareness and
-          automated threat detection.
+          Our AI Vision system empowers drones with advanced perception and
+          autonomy, enabling them to perform complex tasks with precision and
+          reliability.
         </Section.Description>
       </Section.Header>
       <Section.Separator />
@@ -26,8 +26,9 @@ export function AIVisionSection({ scrollProgress }) {
             Thermal imaging
           </Section.SubitemHeader>
           <Section.SubitemBody>
-            captures heat signatures through smoke and darkness at 640x512
-            resolution
+            supports critical missions, from finding missing persons in search &
+            rescue to nighttime reconnaissance and surveillance in defense
+            operations.
           </Section.SubitemBody>
         </Section.Subitem>
         <Section.Subitem>
@@ -36,25 +37,29 @@ export function AIVisionSection({ scrollProgress }) {
             Live dashboard
           </Section.SubitemHeader>
           <Section.SubitemBody>
-            streams 4K video with telemetry overlay at sub-100ms latency
+            delivers real-time insights on any device, keeping responders
+            connected without specialized gear.
           </Section.SubitemBody>
         </Section.Subitem>
         <Section.Subitem>
           <Section.SubitemHeader>
             <NetworkIcon height={24} width={24} className="inline" />
-            Edge analytics
+            Secure communications
           </Section.SubitemHeader>
           <Section.SubitemBody>
-            processes 30 FPS object detection without cloud dependency
+            protect sensitive mission data and ensure reliable connectivity in
+            contested environments.
           </Section.SubitemBody>
         </Section.Subitem>
         <Section.Subitem>
           <Section.SubitemHeader>
-            <WifiIcon height={24} width={24} className="inline" />
-            Mesh networking
+            <CuboidIcon height={24} width={24} className="inline" />
+            Modular Design
           </Section.SubitemHeader>
           <Section.SubitemBody>
-            maintains connectivity across 10km range with automatic failover
+            adapts to mission needs, letting agencies swap sensors, radios, or
+            batteries to configure for public safety, defense, or disaster
+            response.
           </Section.SubitemBody>
         </Section.Subitem>
       </Section.Subgrid>

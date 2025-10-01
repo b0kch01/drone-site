@@ -23,12 +23,12 @@ export function Flight() {
     <div ref={sectionRef}>
       <motion.div
         style={{ width }}
-        className="pointer-events-auto gap-6 flex md:h-screen md:sticky top-0 items-center"
+        className="pointer-events-auto gap-6 flex md:h-screen h-[45vw] md:sticky top-0 items-center"
       >
-        <motion.div className="relative h-full flex-1">
+        <motion.div className="relative flex-1 h-full">
           <FlightVideo scrollYProgress={scrollYProgress} />
         </motion.div>
-        <motion.div className="h-full flex-1">
+        <motion.div className="flex-1 h-full">
           <video
             className="object-cover object-right w-full h-full"
             loop={true}
