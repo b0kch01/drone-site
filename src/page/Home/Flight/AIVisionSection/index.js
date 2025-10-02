@@ -27,8 +27,7 @@ export function AIVisionSection({ scrollProgress }) {
           </Section.SubitemHeader>
           <Section.SubitemBody>
             supports critical missions, from finding missing persons in search &
-            rescue to nighttime reconnaissance and surveillance in defense
-            operations.
+            rescue to nighttime reconnaissance.
           </Section.SubitemBody>
         </Section.Subitem>
         <Section.Subitem>
@@ -58,8 +57,7 @@ export function AIVisionSection({ scrollProgress }) {
           </Section.SubitemHeader>
           <Section.SubitemBody>
             adapts to mission needs, letting agencies swap sensors, radios, or
-            batteries to configure for public safety, defense, or disaster
-            response.
+            batteries to configure for public safety or disaster response.
           </Section.SubitemBody>
         </Section.Subitem>
       </Section.Subgrid>
