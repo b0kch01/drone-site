@@ -26,14 +26,6 @@ export function Navigation() {
         </a>
       </div>
 
-      <Image
-        className="h-10 w-auto ml-2"
-        width={0}
-        height={0}
-        alt=""
-        src="/svg/nvidia-inception.svg"
-      />
-
       <div className="grow" />
 
       <div

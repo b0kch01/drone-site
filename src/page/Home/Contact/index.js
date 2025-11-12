@@ -3,6 +3,7 @@ import { motion, useInView } from "motion/react";
 import { TextScramble } from "@/components/motion-primitives/text-scramble";
 import { useRef, useEffect, useState } from "react";
 import NumberFlow from "@number-flow/react";
+import Image from "next/image";
 
 export function Contact() {
   const footerRef = useRef(null);
@@ -140,7 +141,7 @@ export function Contact() {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8">
               {/* Company Info */}
               <div className="flex-1" ref={footerRef}>
-                <h3 className="text-2xl font-mono font-bold mb-2 uppercase tracking-wider">
+                <h3 className="flex items-center text-2xl font-mono font-bold mb-2 uppercase tracking-wider">
                   <TextScramble
                     characterSet="01_- "
                     duration={1.2}
@@ -150,6 +151,13 @@ export function Contact() {
                   >
                     MYOTIS
                   </TextScramble>
+                  <Image
+                    className="h-10 w-auto ml-2"
+                    width={0}
+                    height={0}
+                    alt=""
+                    src="/svg/nvidia-inception.svg"
+                  />
                 </h3>
                 <p className="text-foreground/50 mb-4 max-w-md">
                   Autonomous aerial systems powered by advanced AI for
