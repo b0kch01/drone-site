@@ -14,13 +14,13 @@ export function Navigation() {
       )}
     >
       <div className="text-lg font-mono">
-        <a href="#" className="flex gap-2">
+        <a href="#" className="flex items-center gap-2">
           <Image
-            width={0}
-            height={0}
+            width={321}
+            height={221}
             alt=""
-            className="w-5"
-            src="/svg/logo.svg"
+            className="w-6 h-auto"
+            src="/logo-2026.png"
           />{" "}
           MYOTIS
         </a>

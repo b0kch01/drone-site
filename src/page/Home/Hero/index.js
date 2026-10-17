@@ -112,37 +112,50 @@ export const Hero = memo(function Hero({ mouse }) {
         }}
         className="pointer-events-none fixed top-0 min-h-screen flex items-center z-20"
       >
-        <motion.h1
-          style={{ gap: scrollGap }}
-          className="select-none flex flex-col justify-center items-center text-center"
-        >
-          <TextEffect
-            style={{ x: positionX, y: positionY }}
-            className="font-gleam text-3xl font-light tracking-tighter"
-            preset="fade-in-blur"
-            delay={1}
-            speedReveal={0.5}
-            speedSegment={0.4}
-          >
-            Welcome to
-          </TextEffect>
-
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 1.2, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 2, delay: 2 }}
+        <div className="flex flex-col items-center">
+          <motion.h1
+            style={{ gap: scrollGap }}
+            className="select-none flex flex-col justify-center items-center text-center"
           >
             <TextEffect
-              style={{ x: positionXHeavy, y: positionYHeavy }}
-              per="char"
-              preset="slide"
-              className="text-6xl md:text-[10vw] md:leading-[10vw] px-2 tracking-tighter md:tracking-[-8px]"
-              delay={2.2}
+              style={{ x: positionX, y: positionY }}
+              className="font-gleam text-3xl font-light tracking-tighter"
+              preset="fade-in-blur"
+              delay={1}
+              speedReveal={0.5}
+              speedSegment={0.4}
             >
-              Modern ISR
+              Welcome to
             </TextEffect>
-          </motion.div>
-        </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 1.2, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 2, delay: 2 }}
+            >
+              <TextEffect
+                style={{ x: positionXHeavy, y: positionYHeavy }}
+                per="char"
+                preset="slide"
+                className="text-6xl md:text-[10vw] md:leading-[10vw] px-2 tracking-tighter md:tracking-[-8px]"
+                delay={2.2}
+              >
+                Modern ISR
+              </TextEffect>
+            </motion.div>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, filter: "blur(10px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1.5, delay: 3.5 }}
+            className="select-none mt-4 px-6 max-w-2xl text-center text-lg md:text-xl tracking-tight text-foreground/70"
+          >
+            AI perception and automatic target recognition (ATR) for drones.
+            <br className="hidden sm:inline" /> Real-time detection,
+            classification, and tracking on the edge.
+          </motion.p>
+        </div>
       </motion.div>
     </div>
   );
