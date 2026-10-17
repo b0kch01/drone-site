@@ -19,25 +19,40 @@ export function FlightVideo({ scrollYProgress }) {
   }
 
   useEffect(() => {
+    const original = originalRef.current;
+    const thermal = thermalRef.current;
+    let cancelled = false;
+    let blobUrls = [];
+
+    // play() rejects if the load is interrupted (e.g. on unmount); that's expected
+    const play = (video) => video.play().catch(() => {});
+
     function resetVideos() {
-      thermalRef.current.currentTime = 0;
-      originalRef.current.currentTime = 0;
-      originalRef.current.play();
-      thermalRef.current.play();
+      thermal.currentTime = 0;
+      original.currentTime = 0;
+      play(original);
+      play(thermal);
     }
 
     (async function loadVideos() {
-      const [originalSrc, thermalSrc] = await Promise.all([
+      blobUrls = await Promise.all([
         preload("/videos/small-car.mp4"),
         preload("/videos/small-thermal.mp4"),
       ]);
 
-      originalRef.current.src = originalSrc;
-      thermalRef.current.src = thermalSrc;
+      if (cancelled) return blobUrls.forEach(URL.revokeObjectURL);
 
-      thermalRef.current?.addEventListener("ended", resetVideos);
+      [original.src, thermal.src] = blobUrls;
+
+      thermal.addEventListener("ended", resetVideos);
       resetVideos();
     })();
+
+    return () => {
+      cancelled = true;
+      thermal.removeEventListener("ended", resetVideos);
+      blobUrls.forEach(URL.revokeObjectURL);
+    };
   }, []);
 
   return (
