@@ -4,6 +4,7 @@ import { TextScramble } from "@/components/motion-primitives/text-scramble";
 import { useRef, useEffect, useState } from "react";
 import NumberFlow from "@number-flow/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Contact() {
   const footerRef = useRef(null);
@@ -204,23 +205,17 @@ export function Contact() {
 
             {/* Bottom Bar */}
             <div className="pt-8 border-t border-foreground/10">
-              <div className="flex flex-col md:flex-row justify-end items-center">
+              <div className="flex flex-col md:flex-row justify-end items-center md:gap-6">
                 <div className="text-foreground/50 text-sm mb-4 md:mb-0">
                   © 2025 Myotis. All rights reserved.
                 </div>
-                <div className="flex space-x-6 text-sm hidden">
-                  <a
-                    href="#"
+                <div className="flex space-x-6 text-sm">
+                  <Link
+                    href="/privacy"
                     className="text-foreground/50 hover:text-foreground transition-colors"
                   >
-                    Privacy
-                  </a>
-                  <a
-                    href="#"
-                    className="text-foreground/50 hover:text-foreground transition-colors"
-                  >
-                    Terms
-                  </a>
+                    Privacy Policy
+                  </Link>
                 </div>
               </div>
             </div>
