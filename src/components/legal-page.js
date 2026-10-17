@@ -33,6 +33,15 @@ export function LegalPage({ title, effectiveDate, children }) {
             Effective Date: {effectiveDate}
           </p>
           {children}
+
+          <div className="mt-16 pt-8 border-t border-foreground/10">
+            <Link
+              href="/"
+              className="text-sm text-foreground/50 hover:text-foreground transition-colors"
+            >
+              ← Back to home
+            </Link>
+          </div>
         </article>
       </main>
     </div>
